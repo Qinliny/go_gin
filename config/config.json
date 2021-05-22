@@ -9,6 +9,6 @@
         "db_port": "3306",
         "db_user": "root",
         "db_password": "root",
-        "db_charset": "utf8"
+        "db_charset": "utf81"
     }
 }
