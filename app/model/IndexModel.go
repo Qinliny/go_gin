@@ -1,7 +1,7 @@
 package model
 
 import (
-	"GinDemo/library"
+	"Qinly/library"
 )
 
 var db = library.Db()

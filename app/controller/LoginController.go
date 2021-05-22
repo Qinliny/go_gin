@@ -1,8 +1,8 @@
 package controller
 
 import (
-	"GinDemo/app"
-	"GinDemo/app/api"
+	"Qinly/app"
+	"Qinly/app/api"
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
 )

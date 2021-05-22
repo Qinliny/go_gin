@@ -1,7 +1,7 @@
 package main
 
 import (
-	"GinDemo/route"
+	"Qinly/route"
 )
 
 var configPath = "./config/config.json"

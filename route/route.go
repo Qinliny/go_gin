@@ -1,8 +1,8 @@
 package route
 
 import (
-	"GinDemo/app/controller"
-	"GinDemo/library"
+	"Qinly/app/controller"
+	"Qinly/library"
 	"github.com/gin-gonic/gin"
 )
 

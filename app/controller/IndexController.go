@@ -1,7 +1,7 @@
 package controller
 
 import (
-	"GinDemo/app"
+	"Qinly/app"
 	"github.com/gin-gonic/gin"
 )
 

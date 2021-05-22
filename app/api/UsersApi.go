@@ -1,7 +1,7 @@
 package api
 
 import (
-	"GinDemo/app/model"
+	"Qinly/app/model"
 	"errors"
 )
 

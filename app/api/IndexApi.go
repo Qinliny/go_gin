@@ -1,6 +1,6 @@
 package api
 
-import "GinDemo/app/model"
+import "Qinly/app/model"
 
 type IndexApi struct {
 
