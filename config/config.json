@@ -1,6 +1,7 @@
 {
     "app": {
-        "prot": "9390"
+        "prot": "9390",
+        "privae_key": "qinlinyang"
     },
     "database": {
         "db_type": "mysql",

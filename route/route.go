@@ -16,14 +16,15 @@ func initRoute() *gin.Engine {
 
 // 加载路由
 func loadRoute(route *gin.Engine) {
+	var middleware Middleware
 	// index路由
-	route.GET("/index", middleware, new(controller.IndexController).Index)
+	route.GET("/index", middleware.Middleware, new(controller.IndexController).Index)
 
 	// user路由
-	route.GET("/user", middleware, new(controller.UserController).Index)
+	route.GET("/user", middleware.Middleware, new(controller.UserController).Index)
 
 	// 检验登录的路由
-	route.POST("/checkLogin", middleware, new(controller.LoginController).CheckLogin)
+	route.POST("/checkLogin", middleware.Middleware, new(controller.LoginController).CheckLogin)
 }
 
 func Run() {
