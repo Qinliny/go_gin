@@ -29,9 +29,9 @@ func loadRoute(route *gin.Engine) {
 
 func Run() {
 	route := initRoute()
-
+	configObj := library.Config{}
 	// 获取配置信息
-	config, err := library.ParseConfig()
+	config, err := configObj.ParseConfig()
 	if err != nil {
 		panic(err.Error())
 	}

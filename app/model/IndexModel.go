@@ -4,7 +4,8 @@ import (
 	"Qinly/library"
 )
 
-var db = library.Db()
+var dbobj = library.Config{}
+var db = dbobj.Database.Db()
 
 type IndexModel struct {
 	Id			int64	`json:"id"`
