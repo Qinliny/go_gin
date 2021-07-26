@@ -9,7 +9,6 @@ import (
 
 type BaseController struct {
 	*gin.Context
-	*library.Base
 }
 
 // 返回请求体
@@ -68,11 +67,7 @@ func (base BaseController) EncodeToken(param map[string]string) string {
 	// 加密的参数
 	token.Claims = claims
 	// 获取私密钥匙
-	config, err := base.ParseConfig()
-	if err != nil {
-		panic(err.Error())
-	}
-	if tokenString, err := token.SignedString([]byte(config.App.PrivaeKey)); err != nil {
+	if tokenString, err := token.SignedString([]byte(library.ConfigParam.App.PrivateKey)); err != nil {
 		return ""
 	} else {
 		return tokenString

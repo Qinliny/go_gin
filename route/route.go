@@ -16,26 +16,18 @@ func initRoute() *gin.Engine {
 
 // 加载路由
 func loadRoute(route *gin.Engine) {
-	var middleware Middleware
 	// index路由
-	route.GET("/index", middleware.Middleware, new(controller.IndexController).Index)
+	route.GET("/index", Middleware, new(controller.IndexController).Index)
 
 	// user路由
-	route.GET("/user", middleware.Middleware, new(controller.UserController).Index)
+	route.GET("/user", Middleware, new(controller.UserController).Index)
 
 	// 检验登录的路由
-	route.POST("/checkLogin", middleware.Middleware, new(controller.LoginController).CheckLogin)
+	route.POST("/checkLogin", Middleware, new(controller.LoginController).CheckLogin)
 }
 
 func Run() {
 	route := initRoute()
-	configObj := library.Config{}
-	// 获取配置信息
-	config, err := configObj.ParseConfig()
-	if err != nil {
-		panic(err.Error())
-	}
-
 	// 从配置信息中获取请求的端口
-	route.Run(":" + config.App.Prot)
+	route.Run(":" + library.ConfigParam.App.Port)
 }
