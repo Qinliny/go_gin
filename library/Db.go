@@ -1,6 +1,7 @@
 package library
 
 import (
+	"Qinly/library/log"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"strings"
@@ -17,6 +18,7 @@ func Db() *gorm.DB {
 	db, err := gorm.Open("mysql", dsn)
 
 	if err != nil {
+		log.ErrorF("Database connection failure, error: %s", err)
 		panic(err)
 	}
 

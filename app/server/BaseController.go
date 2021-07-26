@@ -1,4 +1,4 @@
-package controller
+package server
 
 import (
 	"Qinly/library"
@@ -6,10 +6,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"time"
 )
-
-type BaseController struct {
-	*gin.Context
-}
 
 // 返回请求体
 type ResponseData struct {
@@ -20,40 +16,40 @@ type ResponseData struct {
 
 // 默认的请求常量
 const (
-	SUCCESS     = 200
-	FAILED      = 500
-	SUCCESS_MSG = "请求成功"
-	ERROR_MSG   = "请求失败"
+	SuccessCode = 200
+	FailedCode  = 500
+	SuccessMsg  = "请求成功"
+	ErrorMsg    = "请求失败"
 )
 
 // 请求成功返回的参数
-func (base BaseController) Success(context *gin.Context, data interface{}, message string) {
+func Success(context *gin.Context, data interface{}, message string) {
 	if message == "" {
-		message = SUCCESS_MSG
+		message = SuccessMsg
 	}
 	resp := ResponseData{
-		Code:    SUCCESS,
+		Code:    SuccessCode,
 		Message: message,
 		Data:    data,
 	}
-	context.JSON(SUCCESS, resp)
+	context.JSON(SuccessCode, resp)
 }
 
 // 请求失败返回的参数
-func (base BaseController) Failed(context *gin.Context, message string) {
+func Failed(context *gin.Context, message string) {
 	if message == "" {
-		message = ERROR_MSG
+		message = ErrorMsg
 	}
 	resp := ResponseData{
-		Code:    FAILED,
+		Code:    FailedCode,
 		Message: message,
 		Data:    nil,
 	}
-	context.JSON(SUCCESS, resp)
+	context.JSON(FailedCode, resp)
 }
 
 // 加密函数形成Token
-func (base BaseController) EncodeToken(param map[string]string) string {
+func EncodeToken(param map[string]string) string {
 	token := jwt.New(jwt.SigningMethodES256)
 	// 加密的参数
 	claims := make(jwt.MapClaims)

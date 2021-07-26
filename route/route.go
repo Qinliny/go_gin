@@ -1,7 +1,7 @@
 package route
 
 import (
-	"Qinly/app/controller"
+	"Qinly/app/server"
 	"Qinly/library"
 	"github.com/gin-gonic/gin"
 )
@@ -17,13 +17,13 @@ func initRoute() *gin.Engine {
 // 加载路由
 func loadRoute(route *gin.Engine) {
 	// index路由
-	route.GET("/index", Middleware, new(controller.IndexController).Index)
+	route.GET("/index", Middleware, server.Index)
 
 	// user路由
-	route.GET("/user", Middleware, new(controller.UserController).Index)
+	route.GET("/user", Middleware, server.UserIndex)
 
 	// 检验登录的路由
-	route.POST("/checkLogin", Middleware, new(controller.LoginController).CheckLogin)
+	route.POST("/checkLogin", Middleware, server.CheckLogin)
 }
 
 func Run() {

@@ -1,8 +1,8 @@
 package library
 
 import (
+	"Qinly/library/log"
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 )
 
@@ -45,11 +45,13 @@ var ConfigParam Config
 func init() {
 	file, err := ioutil.ReadFile(ConfigJsonPath)
 	if err != nil {
-		fmt.Println(err)
+		log.ErrorF("Failed to open the configuration file, error: %s", err)
+		panic(err)
 	}
 
 	err = json.Unmarshal(file, &ConfigParam)
 	if err != nil {
-		fmt.Println(err)
+		log.ErrorF("The configuration file fails to be parsed, error: %s", err)
+		panic(err)
 	}
 }
